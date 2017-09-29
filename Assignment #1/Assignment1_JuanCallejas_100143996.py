@@ -7,6 +7,9 @@
 #Student data shall be stored in a global multidimensional array
 StudentData = []
 
+run = true
+message = "What would you like to do?\n"
+
 #These variables are idices for each column
 #And make it unnecessary to memorize the index of each column
 Row_StudentID = 0
@@ -42,7 +45,9 @@ def GetArrayTidy (array):
 
 #Load the CSV file and parse it into a multidimensional array for easy access
 def LoadAndParse ():
-    File = pickAFile();
+    
+    File = pickAFile()
+        
     print "Loaded file \"" + File + "\"\n"
     FileContent = open (File, "rt").read()
     
@@ -53,9 +58,13 @@ def LoadAndParse ():
     #TODO Identify and remove invalid/incorrectly formatted rows
     for i in range (0, len (Rows)):
         #Separate the row by commas, and append the array of items in the row into a row in StudentData
+        if len((Rows[i].split(","))) != 5:
+            print ("Row #" + str (i) + " was ignored as it does not contain 5 elements: \"" + str(Rows[i]) + "\"")
+            continue
+        
         StudentData.append (Rows[i].split (","))
         print "Generated row #" + str(i) + " with " + str(len (StudentData[-1])) + " elements."
-    print "\n Successfully generated 2D array of spreadsheet!\n"
+    print "\nSuccessfully generated 2D array of spreadsheet!\n"
     
     #Print the generated array to make sure it was properly generated
     PrintArrayTidy (StudentData)
@@ -131,8 +140,7 @@ def studentAverage (studentID):
 #is attempted on an empty StudentData array
 LoadAndParse()
 
-run = true
-message = "What would you like to do?\n"
+
 while run:
     
     #Do I need these assignments in new lines? no
