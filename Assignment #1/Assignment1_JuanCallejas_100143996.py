@@ -50,6 +50,7 @@ def LoadAndParse ():
     Rows = FileContent.split ("\n")
     
     #Loop through every row
+    #TODO Identify and remove invalid/incorrectly formatted rows
     for i in range (0, len (Rows)):
         #Separate the row by commas, and append the array of items in the row into a row in StudentData
         StudentData.append (Rows[i].split (","))
@@ -64,7 +65,7 @@ def filterByAssignment (assignmentID):
     #Range should start at 1 (skip the first one) since the first row contains the column labels
     rowCompilation = ""
     for i in range (1, len (StudentData)):
-        if int(StudentData[i] [Row_Assignment]) == int (float (assignmentID)):
+        if int(StudentData[i] [Row_Assignment]) == int (assignmentID):
             rowCompilation += CompileRow (StudentData[i]) + "\n"
             
     if rowCompilation == "":
@@ -90,7 +91,7 @@ def assignmentAverage (assignmentID):
     #Range should start at 1 (skip the first one) since the first row contains the column labels
     for i in range (1, len (StudentData)):
         if int(StudentData[i] [Row_Assignment]) == int (float (assignmentID)):
-            valueSum += int(StudentData [i] [Row_Mark])
+            valueSum += float(StudentData [i] [Row_Mark])
             valueCount += 1
                     
     #Make sure we don't get an error if we attempt to divide by 0
@@ -100,7 +101,7 @@ def assignmentAverage (assignmentID):
         return "ERROR: No values found for assignment " + str (assignmentID)
 
 
-    average = valueSum / valueCount
+    average = float (valueSum) / float(valueCount)
     return "Assignment #" + str (assignmentID) + " average: " + str (average)
 
 def studentAverage (studentID):
@@ -112,7 +113,7 @@ def studentAverage (studentID):
         if int(StudentData[i] [Row_StudentID]) == int (float (studentID)):
             #Get the student name for use in final print string
             name = StudentData[i] [Row_GivenName] + " " + StudentData[i] [Row_FamilyName]
-            valueSum += int(StudentData [i] [Row_Mark])
+            valueSum += float(StudentData [i] [Row_Mark])
             valueCount += 1
     
     #Make sure we don't get an error if we attempt to divide by 0
@@ -121,7 +122,7 @@ def studentAverage (studentID):
         print "ERROR: No values found for ID " + str (studentID)
         return "ERROR: No values found for ID " + str (studentID)
     
-    average = valueSum / valueCount
+    average = float(valueSum) / float(valueCount)
     return "Student ID " + str (studentID) + " (" + name + ") average: " + str (average)
     
 
