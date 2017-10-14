@@ -22,7 +22,7 @@ Row_Mark = 4
 #Separate method for printing a column with (usually) correct spacing
 def PrintRow (row):
     print (CompileRow (row))
-    
+	
 #Compile the row with nice spacing and formatting
 def CompileRow (row):
     compilation = ""
