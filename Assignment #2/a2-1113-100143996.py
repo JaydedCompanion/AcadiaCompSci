@@ -9,11 +9,8 @@ def changePixelColor (pixel, col):
 	
 #Make the RGB values of the pixel to the smallest of the three
 def changePixelGrey (pix):
-	
 	value = int (getMin (pix.getColor()))
-	
 	changePixelColor (pix, makeColor (value, value, value))
-	
 	return pix
 
 #Set the colour of all the pixels in the image to the second parameter
@@ -22,11 +19,10 @@ def wipeOut (pic, col):
 		changePixelColor (pix, col)
 	return pic
 
+#Loop through all pixels and call the changePixelGrey() on them
 def greyOut (pic):
-	
 	for pix in pic.getPixels():
 		changePixelGrey (pix)
-		
 	return pic
 
 #Call the changePixelGrey() method on every other pixel
@@ -41,10 +37,14 @@ def everySecond (pic):
 #Find the smallest value of an array,
 #An alternate mode is available, where individual rgb values may be passed and an array will be generated and used
 #Yet another altername mode is available where a color object is passed, and it is called again but with those values as parameters instead
+#R Is a multi-use parameter. 
+##If R is a colour, it is treated as such
+##If R is an array, it is treated as such
+##If R is an int, and G and B are not None, use the individual RGB values
 def getMin (r = None, g = None, b = None):	
 	
 	#If we're using rgb parameters use this code
-	if (not r == None) and (not g == None) and (not b == None) and (not isinstance (r, list)):
+	if (not r == None) and (not g == None) and (not b == None) and (isinstance (r, int)):
 		
 		#print "Getting smallest value in rgb: " + str (r) + ", " + str (g) + ", " + str (b)
 		
@@ -79,4 +79,5 @@ def getMin (r = None, g = None, b = None):
 	#Return the lowest minimum value
 	return minimum
 
-explore (greyOut (makePicture (pickAFile())))
+#Uncomment the following line for an automatic test of the greyOut() method
+#explore (greyOut (makePicture (pickAFile())))
