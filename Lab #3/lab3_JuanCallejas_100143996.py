@@ -13,5 +13,5 @@ def getStory (filename):
     
     for i in range (0, len (Lines)):
         #Offset the index by -2.... because reasons.
-        if (i-2) % 3 == 0:
+        if (i-2) % 3 == 0 and not Lines [i] == None:
             print Lines[i]
