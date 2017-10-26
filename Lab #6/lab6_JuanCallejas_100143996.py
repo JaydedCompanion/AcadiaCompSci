@@ -3,16 +3,24 @@
 #COMP 1110L X1
 #Instructor: Greg Lee
 
-def Quaters (img):
+def Quarters (img):
+    
+    #Seriously? Why not let us use a primitive colour like with the other corners instead of having to define a new one smh
+    purple = makeColor (152, 0, 255)
+    w = img.getWidth()
+    h = img.getHeight()
     
     for pix in img.getPixels ():
+        
+        x = pix.getX()
+        y = pix.getY()
         
         top = true
         left = true
         
-        if (pix.getX() > img.getWidth() / 2):
+        if (x > w / 2):
             left = false
-        if (pix.getY() > img.getHeight() / 2):
+        if (y > h / 2):
             top = false
         
         if top:
@@ -22,9 +30,20 @@ def Quaters (img):
                 greyscale (pix)
         else:
             if left:
-                RGB_Percent (0, 1, 1)
+                RGB_Percent (pix, 0, 1, 1)
             else:
                 SwapGreenBlue (pix)
+                
+        if (x < w / 4):
+            if (y < h / 4):
+                pix.setColor (yellow)
+            elif (y > (h / 4) * 3):
+                pix.setColor (orange)
+        elif (x > (w / 4) * 3):
+            if (y < h / 4):
+                pix.setColor (pink)
+            elif (y > (h / 4) * 3):
+                pix.setColor (purple)
                 
     return img
                 
