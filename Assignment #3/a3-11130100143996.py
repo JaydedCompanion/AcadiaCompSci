@@ -40,3 +40,45 @@ def gridBuilder (img, xs, ys, color):
         if pix.getX() % xs == 0 or pix.getY() % ys == 0:
             pix.setColor (color)
     return img
+
+def interface ():
+    
+    imagePath = pickAFile ()
+    if imagePath == None or imagePath == "" or imagePath == "None":
+        return -1
+    originalImage = makePicture (imagePath)
+    workingImage = originalImage
+    
+    string = "What would you like to do with \"" + getShortPath (imagePath) + "\"?\n"
+    string += "1: grid\n"
+    string += "2: grid2 (custom spacing)\n"
+    string += "3: grid3 (custom spacing and color)\n"
+    string += "4: negateHalf\n"
+    
+    userInput = requestIntegerInRange (string, 1, 4);
+    
+    if (userInput == None):
+        return -1
+    
+    if userInput == 1:
+        grid (workingImage)
+    elif userInput == 2:
+        spacing = requestInteger ("grid2 spacing")
+        grid2 (workingImage, spacing)
+    elif userInput == 3:
+        spacing = requestInteger ("grid3 spacing")
+        col = pickAColor ()
+        grid3 (workingImage, spacing, col)
+    elif userInput == 4:
+        half = requestIntegerInRange ("1: Left\n2: Right:\n3: Top\n4: Bottom", 1, 4)
+        negateHalf (workingImage, half)
+        
+    show (workingImage)
+        
+print ("======= Program Running =======")
+
+while (true):
+    
+    if interface() == -1:
+        print ("======= Program Finished =======")
+        break
