@@ -3,6 +3,8 @@
 #COMP 1113 X1
 #Instructor: Darcy Benoit
 
+import time
+
 #This method generates a mask for us to use for the main method
 def makeMask (w, h, x, y, r):
     canvas = makeEmptyPicture (w, h, black)
@@ -51,3 +53,44 @@ def border (img, border):
     canvas = copyInto (img, canvas, border/2, border/2)
     
     return canvas
+
+#QUESTION 3
+def animation (framerate):
+    
+    if (framerate == None):
+        #60fps PC master race
+        framerate = 60
+    
+    #Define animation size
+    width = 1920/2
+    height = 1080/2
+    
+    canvas = makeEmptyPicture (width, height, white)
+    
+    #Ball 'physics' variables
+    xOffset = 300
+    xPos = 0;
+    radius = 64;
+    arcWidth = -50
+    arcTravel = arcWidth
+    
+    while (true):
+        #Clear the canvas
+        setAllPixelsToAColor (canvas, white)
+        #Define the y position using a quadratic formula
+        yPos = (1080*0.5) + (0.1 * (arcTravel * arcTravel))
+        #Draw the ball at the x and y position
+        addOval (canvas, int(xPos) - radius, int(yPos) - radius - xOffset, radius, radius, blue)
+        #Move the ball to the right
+        xPos += 0.3
+        arcTravel += 0.3
+        #Keep the ball in bounds by looping around
+        if (xPos > width + radius*2):
+            xPos = -radius
+        #If the ball hits the virtual ground, bounce it, by resetting the position of the quadratic formula's x position
+        if (yPos > (1080*0.5) + (0.1 * (arcWidth * arcWidth))):
+            arcTravel = arcWidth
+        #Render the frame to the screen
+        repaint (canvas)
+        time.sleep (1/framerate)
+        
