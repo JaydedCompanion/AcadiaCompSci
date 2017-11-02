@@ -13,6 +13,7 @@ def makeMask (w, h, x, y, r):
 def maskCheck (col):
     return (col.getRed() + col.getGreen() + col.getBlue())/3 > 128
 
+#QUESTION 1
 def circlePic (img, x, y, r):
     
     #Width and Height variables defined for easy access
@@ -34,5 +35,19 @@ def circlePic (img, x, y, r):
         #If the mask pixel is set to show, make the current canvas pixel be the colour of the corresponding pixel in our original image  
         if (maskCheck (maskPixels [i])):
             canvasPixels [i].setColor (originalPixels [i].getColor())
+    
+    return canvas
+
+#QUESTION 2
+def border (img, border):
+    
+    w = img.getWidth()
+    h = img.getHeight()
+    
+    border *= 2
+    
+    canvas = makeEmptyPicture (w + border, h + border, black)
+    
+    canvas = copyInto (img, canvas, border/2, border/2)
     
     return canvas
