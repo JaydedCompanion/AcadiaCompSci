@@ -94,3 +94,16 @@ def animation (framerate):
         repaint (canvas)
         time.sleep (1/framerate)
         
+#QUESTION 4
+def generateChessBoard (size, col):
+    #Create a canvas
+    canvas = makeEmptyPicture (size, size, white)
+    #Each square, and the distance between squares, is an eighth of the size of the image (since chess boards are 8 x 8 grids)
+    squareSize = size/8
+    for x in range (0, 8):
+        for y in range (0, 8):
+            #If both/neither X and/nor Y are multiples of 2, draw a square 
+            if ((x % 2 == 0) == (y % 2 == 0)):
+                #Draw the square by multiplying the spacing by which square on the grid this is, and using the spacing as the width and height
+                addRectFilled (canvas, squareSize * x, squareSize * y, squareSize, squareSize, col)
+    return canvas
