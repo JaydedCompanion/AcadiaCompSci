@@ -1,4 +1,4 @@
-#lab6_JuanCallejas_100143996.py
+#lab7_JuanCallejas_100143996.py
 #By Juan Callejas
 #COMP 1110L X1
 #Instructor: Greg Lee
