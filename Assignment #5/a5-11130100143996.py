@@ -68,3 +68,37 @@ def stats (sound):
     print ("The smallest value (" + str(smallestValue) + ") occurs " + str(smallestCount) + " times.")
     print ("There are " + str(zeroCount) + " zeros.")
     
+    
+#QUESTION 3
+def splice (target, source, loc):
+    
+    #Define canvas with proper sampling rate to avoid distortion
+    rate = getSamplingRate (target)
+    canvas = makeEmptySound (loc + getLength (source), int (rate))
+    
+    i = 0   #Index for target sound
+    j = 0   #Index for source sound
+    
+    #Loop through canvas's samples
+    for sample in getSamples (canvas):
+        
+        newVal = None
+        
+        #If the index is less than the splice point, use the target sound
+        if (i < loc):
+            #Avoid indexOutOfRange exceptions by only appending the sample value if it exists
+            if (i < getLength (target) - 1):
+                newVal = getSampleValueAt (target, i)
+            else:
+                newVal = 0
+        #Otherwise if the index is past the splice point use the source sound and increase the 2nd index
+        else:
+            newVal = getSampleValueAt (source, j)
+            j += 1
+        
+        #Splice the corresponding sample value
+        setSampleValue (sample, newVal)
+        
+        i += 1
+        
+    return canvas
