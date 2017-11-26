@@ -93,3 +93,51 @@ def stitcher (sounds):
     #Return the finished sound
     return canvas
         
+
+#QUESTION 2
+def mountains (sound):
+    
+    waveCount = 2
+    samples = getSamples (sound)
+    waveAmplitude = 32767                       #Height of the triangle wave
+    waveLength = getLength (sound)/(waveCount)  #Units before the wave loops
+    
+    for i in range (0, len(samples)):
+        
+        f = (2 * math.pi)/waveLength
+        f *= i + (waveLength/4)
+        f = math.sin (f)
+        f = math.asin (f)
+        f *= (2 * waveAmplitude)/math.pi
+        
+        if (i % 100 == 0):
+            print (f)
+        
+        setSampleValue (samples [i], f)
+        
+    return sound
+
+#QUESTION 2.1
+def mountains2 (sound):
+    
+    waveCount = 2
+    samples = getSamples (sound)
+    waveAmplitude = 32767                       #Height of the triangle wave
+    waveLength = getLength (sound)/(waveCount)  #Units before the wave loops
+    
+    for i in range (0, len(samples)):
+        mountainSample (samples[i], i, waveLength, waveAmplitude)
+    
+    return sound
+
+#Method to handle single sample instance
+def mountainSample (sample, i, p, a):
+    f = (2 * math.pi)/p
+    f *= i + (p/4)
+    f = math.sin (f)
+    f = math.asin (f)
+    f *= (2 * a)/math.pi
+
+    if (i % 100 == 0):
+        print (f)
+    setSampleValue (sample, f)
