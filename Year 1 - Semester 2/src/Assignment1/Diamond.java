@@ -1,9 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
+package Assignment1;
 
-/**
- * Created by TheShadyColombian on 2018-01-15.
- */
+import java.util.ArrayList;
+
 public class Diamond {
 	
 	/**
