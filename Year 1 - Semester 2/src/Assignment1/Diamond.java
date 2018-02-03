@@ -22,6 +22,12 @@ public class Diamond {
 	
 	private static final int RowLength = 21;
 	
+	public static void main (String[] params) {
+	
+		Diamond();
+		
+	}
+	
 	public static void Diamond () {
 		
 		Diamond(9);
