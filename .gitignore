@@ -6,3 +6,5 @@ Year 1 - Semester 2/.idea/workspace.xml
 *.iml
 
 Year 1 - Semester 2/.idea/workspace.xml
+*.class
+/out/*
