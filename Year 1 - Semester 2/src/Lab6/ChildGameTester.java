@@ -27,7 +27,7 @@ public class ChildGameTester
     System.out.println("5: " + c);
     
     //Let's mess things up
-   // System.out.println("6: What a mess " + c.messedUpNumber());
+    System.out.println("6: What a mess " + c.messedUpNumber());
     
     // Get my favourite number and make sure it's less than 10
     temp = c.getFavNumber();
