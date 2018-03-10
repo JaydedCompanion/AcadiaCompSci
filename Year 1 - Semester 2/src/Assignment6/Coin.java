@@ -6,6 +6,8 @@
 //  Represents a coin with two sides that can be flipped.
 //********************************************************************
 
+package Assignment6;
+
 public class Coin
 {
     private final int HEADS = 0;
