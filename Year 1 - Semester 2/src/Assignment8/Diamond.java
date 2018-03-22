@@ -36,12 +36,12 @@ public class Diamond extends Application {
 		
 		//Transform the instances according to which corner they represent
 		Q2.setRotate(90);
-		Q2.setTranslateX(400);
+		Q2.setTranslateX(SIZE);
 		Q3.setRotate(270);
-		Q3.setTranslateY(400);
+		Q3.setTranslateY(SIZE);
 		Q4.setRotate(180);
-		Q4.setTranslateX(400);
-		Q4.setTranslateY(400);
+		Q4.setTranslateX(SIZE);
+		Q4.setTranslateY(SIZE);
 		
 		//Add the instances to the group
 		group.getChildren().add(Q1);

@@ -33,11 +33,11 @@ public class Square extends Group {
 		for (int i = 0; i < CIRCLECOUNT; i ++) {
 			
 			//Generate random x/y coordinates
-			double x = random.nextDouble() * 399;
-			double y = random.nextDouble() * 399;
+			double x = random.nextDouble() * (SIZE - 1);
+			double y = random.nextDouble() * (SIZE - 1);
 			
 			//Sets color depending on which half of the group it is in
-			Color col = ((x + y)/2 < 200) ? LL : UR;
+			Color col = ((x + y)/2 < (SIZE/2)) ? LL : UR;
 			
 			//Create group and add to circle array
 			circles [i] = new Circle(x, y, 1, col);
