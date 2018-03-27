@@ -29,15 +29,15 @@ public class NumbersWord {
 	}
 	
 	//Getters
-	private int getA () {return a;}
-	private int getB () {return b;}
-	private int getC () {return c;}
-	private String getS() {return s;}
+	public int getA () {return a;}
+	public int getB () {return b;}
+	public int getC () {return c;}
+	public String getS () {return s;}
 	//Setters
-	private void setA (int val) {a = val;}
-	private void setB (int val) {b = val;}
-	private void setC (int val) {c = val;}
-	private void setS(String val) {s = val;}
+	public void setA (int val) {a = val;}
+	public void setB (int val) {b = val;}
+	public void setC (int val) {c = val;}
+	public void setS (String val) {s = val;}
 	
 	public void shuffle () {
 		int oldA = a;
