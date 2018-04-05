@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class JuanCallejas extends Application {
@@ -30,7 +29,7 @@ public class JuanCallejas extends Application {
 	private static final int ZigZag = 50;
 	private static final String title =
 			"\uD83D\uDC3A Red Riding Hood \uD83D\uDC3A";
-	public static final String titleWarn =
+	private static final String titleWarn =
 			"[STARTING TIME MAY BE REQUIRED]";
 	
 	public static void main(String[] args) {
@@ -82,17 +81,12 @@ public class JuanCallejas extends Application {
 				while (true) {
 					final double fx = x;
 					final double fx2 = x2;
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							redRidingHood.setPos(
-									//Move RRH along the screen
-									(int)fx - 50,
-									//Make RRH zig-zag by using sine
-									320 + (int)(Math.sin(fx*0.08)*5)
-							);
-						}
-					});
+					Platform.runLater(() -> redRidingHood.setPos(
+							//Move RRH along the screen
+							(int)fx - 50,
+							//Make RRH zig-zag by using sine
+							320 + (int)(Math.sin(fx*0.08)*5)
+					));
 					
 					//Make RRH move in bursts
 					increment = lerp(increment, 0, 0.1);
