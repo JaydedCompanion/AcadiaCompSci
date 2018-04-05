@@ -21,7 +21,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.Anchor;
 
 import java.awt.*;
 
